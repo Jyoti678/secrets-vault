@@ -1,134 +1,121 @@
-\# Secure Secrets Vault
+# Secure Secrets Vault
 
+An educational Python project exploring the core cryptographic concepts behind a secure secrets vault.
 
+The current implementation focuses on experimenting with **Argon2-based key derivation** and **AES-GCM authenticated encryption** rather than providing a complete production password manager.
 
-Secure Secrets Vault is an educational zero-knowledge password manager designed to demonstrate modern cryptographic practices such as strong key derivation and authenticated encryption.
+> **Security Notice:** This project is strictly for educational purposes. Do not use it to store real or sensitive passwords.
 
+## What This Project Demonstrates
 
+* Deriving cryptographic key material from a password using **Argon2**
+* Encrypting data using **AES-GCM**
+* Understanding authenticated encryption and data integrity
+* Exploring the basic building blocks of secure local secret storage
+* Structuring a small security-focused Python project
 
-This project focuses on security concepts, clean architecture, and professional Git workflows rather than production deployment.
+## Cryptographic Flow
 
+```text id="1a5r8z"
+Password
+   │
+   ▼
+Argon2 Key Derivation
+   │
+   ▼
+Derived Key
+   │
+   ▼
+AES-GCM Encryption
+   │
+   ▼
+Encrypted Data
+```
 
+## Current Implementation
 
-\## Security Notice
+The repository currently contains a small Python-based cryptography implementation used to experiment with the concepts above.
 
-
-
-This project is strictly for educational and learning purposes.  
-
-Do not use this application to store real or sensitive passwords.
-
-
-
-\## Features
-
-
-
-\- Zero-knowledge architecture (no plaintext data storage)
-
-\- Argon2 for secure master password key derivation
-
-\- AES-GCM for authenticated encryption
-
-\- Isolated Python virtual environment
-
-\- Clean and modular project structure
-
-\- Version-controlled using Git
-
-
-
-\## Cryptographic Design Overview
-
-
-
-\- \*\*Key Derivation:\*\*  
-
-&nbsp; Argon2 is used to derive a strong encryption key from the master password.
-
-
-
-\- \*\*Encryption:\*\*  
-
-&nbsp; AES-GCM ensures both confidentiality and integrity of stored secrets.
-
-
-
-\- \*\*Zero-Knowledge Principle:\*\*  
-
-&nbsp; All encryption and decryption operations occur locally.  
-
-&nbsp; No plaintext passwords are ever stored or transmitted.
-
-
-
-\## Project Structure
-
-
-
+```text id="2x8f0s"
 secret-vault/
+├── crypto/
+│   └── zero_knowledge_test.py
+├── .gitignore
+├── requirements.txt
+├── README.md
+└── LICENSE
+```
 
-├── crypto/ # Cryptographic modules
+## Running Locally
 
-│ └── zero\_knowledge\_test.py
+### Prerequisites
 
-├── .gitignore # Git ignored files (venv, secrets, etc.)
+* Python 3.x
+* Git
 
-├── requirements.txt # Python dependencies
+### Clone the repository
 
-├── README.md # Project documentation
-
-└── LICENSE # MIT License
-
-
-
-
-
-\## Setup and Execution
-
-
-
-Clone the repository and set up the virtual environment:
-
-
-
-```bash
-
+```bash id="s5pm36"
 git clone https://github.com/Jyoti678/secret-vault.git
-
 cd secret-vault
+```
 
+### Create a virtual environment
+
+**Windows:**
+
+```bash id="y7efxq"
 python -m venv venv
+venv\Scripts\activate
+```
 
-venv\\Scripts\\activate
+**macOS/Linux:**
 
+```bash id="p8wq7n"
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### Install dependencies
+
+```bash id="q3b8ko"
 pip install -r requirements.txt
+```
 
-python crypto/zero\_knowledge\_test.py
+### Run the implementation
 
-Learning Objectives
+```bash id="2i5j4r"
+python crypto/zero_knowledge_test.py
+```
 
-Understanding zero-knowledge system design
+## Why I Built This
 
+This project was created to strengthen my understanding of practical cryptography and secure application design, particularly:
 
+* Password-based key derivation
+* Authenticated encryption
+* AES-GCM
+* Argon2
+* Secure handling of locally processed data
 
-Applying password-based key derivation securely
+## Limitations
 
+This repository is **not a complete password manager** and has not undergone independent security auditing.
 
+It currently does not implement the complete functionality expected from a production password-management system, such as a persistent encrypted vault, account recovery, comprehensive key lifecycle management, extensive security testing, or production-grade threat modeling.
 
-Implementing authenticated encryption
+## Future Improvements
 
+Planned areas for experimentation include:
 
+* Persistent encrypted vault storage
+* Secure vault file format
+* Password-strength analysis
+* Automated cryptographic tests
+* More comprehensive threat modeling
+* Command-line or web interface
+* Additional encryption and key-management experiments
 
-Structuring security-focused Python projects
+## License
 
-
-
-Maintaining professional Git repositories
-
-
-
-License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
-
+This project is licensed under the MIT License. See the `LICENSE` file for details.
